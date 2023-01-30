@@ -19,8 +19,15 @@
 
 
 <c:choose>
-    <c:when test = "${param.username.equals=('admin') && param.password.equals('passwrd')}">
+    <c:when test="${param.username.equals('admin') && param.password.equals('password')}">
 
+        <% response.sendRedirect("/profile.jsp"); %>
+    </c:when>
+    <c:otherwise>
+        <c:if test="${param.username != null && param.password != null}">
+            <% response.sendRedirect("/login.jsp"); %>
+        </c:if>
+    </c:otherwise>
 </c:choose>
 
 
